@@ -1,18 +1,7 @@
 #include <iostream>
 #include <random>
 using namespace std;
-
-
-void ex2();
-void ex3();
-void ex4();
-void ex5();
-void ex6();
-void ex7();
-void ex8();
-void ex9();
-void ex10();
-
+#include "Main.h"
 int main()
 {
     //ex6(6);
@@ -105,13 +94,13 @@ void ex9()
 	cout << "Enter name: ";
 	cin >> name;
 
-	cout << "Enter Age: ";
-	cin >> age;
+	
 
-	if (age > 2 || age < 150) {
-
-		cout << "Your: " << name << "and your age is: " << age;
-	}
+	do
+	{
+		cout << "Enter Age: ";
+		cin >> age;
+	} while (age < 2 || age>150);
 
 }
 
@@ -119,13 +108,37 @@ void ex10()
 {
 	int num[3];
 	int temp;
+	bool flag;
 	
+	for (int i = 0; i < 3; i++)
+	{
+		
 		do {
-			cout << "enter a number: ";
+
+			flag = true;
+			cout << "Enter number: \n";
 			cin >> temp;
-		} while (temp < 0 || temp > 9);
-		cout << temp;
-	
+			if (temp > 9 || temp < 0)
+			{
+				cout << "number must be between 0 and 9 \n";
+				flag = false;
+			}
+			else
+			{
+				for (int j = 0; j < i; j++)
+				{
+					if (temp == num[j])
+					{
+						cout << "input must not be a repeated value.\n";
+						flag = false;
+						break;
+					}
+				}
+			}
+		} while (!flag);
+		num[i] = temp;
+	}
+	cout << "Numbers: " << num[0] << ", " << num[1] << ", " << num[2] << endl;
 	
 
 }
